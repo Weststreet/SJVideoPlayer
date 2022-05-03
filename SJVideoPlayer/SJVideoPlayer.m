@@ -544,11 +544,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)_updateAppearStateForMoteItemIfNeeded {
     if ( _moreItem != nil ) {
-        BOOL isHidden = !self.isFullScreen;
-        if ( isHidden != self.moreItem.isHidden ) {
-            self.moreItem.hidden = !self.isFullScreen;
+//         BOOL isHidden = !self.isFullScreen;
+//         if ( isHidden != self.moreItem.isHidden ) {
+            self.moreItem.hidden = NO;
             [self.defaultEdgeControlLayer.topAdapter reload];
-        }
+//         }
     }
 }
 
@@ -583,7 +583,7 @@ NS_ASSUME_NONNULL_BEGIN
         if (@available(iOS 14.0, *)) {
             isPictureInPictureEnabled = self.playbackController.pictureInPictureStatus != SJPictureInPictureStatusUnknown;
         }
-        BOOL isHidden = (self.URLAsset == nil) || !self.isFullScreen || isUnsupportedFormat || isPictureInPictureEnabled;
+        BOOL isHidden = (self.URLAsset == nil)  || isUnsupportedFormat || isPictureInPictureEnabled;
         if ( isHidden != _clipsItem.isHidden ) {
             _clipsItem.hidden = isHidden;
             [_defaultEdgeControlLayer.rightAdapter reload];
