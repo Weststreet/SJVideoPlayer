@@ -167,7 +167,7 @@ NSNotificationName const SJVideoPlayerConfigurationsDidUpdateNotification = @"SJ
 
     _progressTrackColor =  [UIColor whiteColor];
     _progressTrackHeight = 3;
-    _progressTraceColor = [UIColor colorWithRed:2 / 256.0 green:141 / 256.0 blue:140 / 256.0 alpha:1];
+    _progressTraceColor = [UIColor colorWithRed:218 / 256.0 green:112 / 256.0 blue:214 / 256.0 alpha:1];
     _progressBufferColor = [UIColor colorWithWhite:0 alpha:0.2];
     _progressThumbColor = _progressTraceColor;
     
