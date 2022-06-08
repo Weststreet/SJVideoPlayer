@@ -68,7 +68,7 @@
     if ( !self ) return nil;
     _bottomProgressIndicatorHeight = 1;
     _automaticallyPerformRotationOrFitOnScreen = YES;
-    [self _setupView];
+//    [self _setupView];
     self.autoAdjustTopSpacing = YES;
     self.hiddenBottomProgressIndicator = YES;
     if (@available(iOS 14.0, *)) {
@@ -206,11 +206,11 @@
 
 - (void)installedControlViewToVideoPlayer:(__kindof SJBaseVideoPlayer *)videoPlayer {
     _videoPlayer = videoPlayer;
-    sj_view_makeDisappear(_topContainerView, NO);
-    sj_view_makeDisappear(_leftContainerView, NO);
-    sj_view_makeDisappear(_bottomContainerView, NO);
-    sj_view_makeDisappear(_rightContainerView, NO);
-    sj_view_makeDisappear(_centerContainerView, NO);
+    sj_view_makeDisappear(_topContainerView, YES);
+    sj_view_makeDisappear(_leftContainerView, YES);
+    sj_view_makeDisappear(_bottomContainerView, YES);
+    sj_view_makeDisappear(_rightContainerView, YES);
+    sj_view_makeDisappear(_centerContainerView, YES);
     
     [self _reloadSizeForBottomTimeLabel];
     [self _updateContentForBottomCurrentTimeItemIfNeeded];
@@ -945,20 +945,20 @@
         sj_view_makeDisappear(_rightContainerView, YES);
         return;
     }
-    
+    sj_view_makeAppear(_rightContainerView, YES);
     /// 锁屏状态下, 使隐藏
-    if ( _videoPlayer.isLockedScreen ) {
-        sj_view_makeDisappear(_rightContainerView, YES);
-        return;
-    }
-    
-    /// 是否显示
-    if ( _videoPlayer.isControlLayerAppeared ) {
-        sj_view_makeAppear(_rightContainerView, YES);
-    }
-    else {
-        sj_view_makeDisappear(_rightContainerView, YES);
-    }
+//    if ( _videoPlayer.isLockedScreen ) {
+//        sj_view_makeDisappear(_rightContainerView, YES);
+//        return;
+//    }
+//
+//    /// 是否显示
+//    if ( _videoPlayer.isControlLayerAppeared ) {
+//        sj_view_makeAppear(_rightContainerView, YES);
+//    }
+//    else {
+//        sj_view_makeDisappear(_rightContainerView, YES);
+//    }
 }
 
 - (void)_updateAppearStateForCenterContainerView {
