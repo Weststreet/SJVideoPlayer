@@ -585,7 +585,7 @@ NS_ASSUME_NONNULL_BEGIN
         }
         BOOL isHidden = (self.URLAsset == nil)  || isUnsupportedFormat || isPictureInPictureEnabled;
         if ( isHidden != _clipsItem.isHidden ) {
-            _clipsItem.hidden = isHidden;
+            _clipsItem.hidden = NO;
             [_defaultEdgeControlLayer.rightAdapter reload];
         }
     }

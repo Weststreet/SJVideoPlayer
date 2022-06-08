@@ -767,16 +767,16 @@
 }
 
 - (void)_addItemsToTopAdapter {
-    SJEdgeControlButtonItem *backItem = [SJEdgeControlButtonItem placeholderWithType:SJButtonItemPlaceholderType_49x49 tag:SJEdgeControlLayerTopItem_Back];
-    backItem.resetsAppearIntervalWhenPerformingItemAction = NO;
-    [backItem addAction:[SJEdgeControlButtonItemAction actionWithTarget:self action:@selector(_backItemWasTapped)]];
-    [self.topAdapter addItem:backItem];
-    _backItem = backItem;
-
-    SJEdgeControlButtonItem *titleItem = [SJEdgeControlButtonItem placeholderWithType:SJButtonItemPlaceholderType_49xFill tag:SJEdgeControlLayerTopItem_Title];
-    [self.topAdapter addItem:titleItem];
-    
-    [self.topAdapter reload];
+//    SJEdgeControlButtonItem *backItem = [SJEdgeControlButtonItem placeholderWithType:SJButtonItemPlaceholderType_49x49 tag:SJEdgeControlLayerTopItem_Back];
+//    backItem.resetsAppearIntervalWhenPerformingItemAction = NO;
+//    [backItem addAction:[SJEdgeControlButtonItemAction actionWithTarget:self action:@selector(_backItemWasTapped)]];
+//    [self.topAdapter addItem:backItem];
+//    _backItem = backItem;
+//
+//    SJEdgeControlButtonItem *titleItem = [SJEdgeControlButtonItem placeholderWithType:SJButtonItemPlaceholderType_49xFill tag:SJEdgeControlLayerTopItem_Title];
+//    [self.topAdapter addItem:titleItem];
+//
+//    [self.topAdapter reload];
 }
 
 - (void)_addItemsToLeftAdapter {
@@ -788,61 +788,61 @@
 }
 
 - (void)_addItemsToBottomAdapter {
-    // 播放按钮
-    SJEdgeControlButtonItem *playItem = [SJEdgeControlButtonItem placeholderWithType:SJButtonItemPlaceholderType_49x49 tag:SJEdgeControlLayerBottomItem_Play];
-    [playItem addAction:[SJEdgeControlButtonItemAction actionWithTarget:self action:@selector(_playItemWasTapped)]];
-    [self.bottomAdapter addItem:playItem];
-    
-    SJEdgeControlButtonItem *liveItem = [[SJEdgeControlButtonItem alloc] initWithTag:SJEdgeControlLayerBottomItem_LIVEText];
-    liveItem.hidden = YES;
-    [self.bottomAdapter addItem:liveItem];
-    
-    // 当前时间
-    SJEdgeControlButtonItem *currentTimeItem = [SJEdgeControlButtonItem placeholderWithSize:8 tag:SJEdgeControlLayerBottomItem_CurrentTime];
-    [self.bottomAdapter addItem:currentTimeItem];
-    
-    // 时间分隔符
-    SJEdgeControlButtonItem *separatorItem = [[SJEdgeControlButtonItem alloc] initWithTitle:[NSAttributedString sj_UIKitText:^(id<SJUIKitTextMakerProtocol>  _Nonnull make) {
-        make.append(@"/ ").font([UIFont systemFontOfSize:11]).textColor([UIColor whiteColor]).alignment(NSTextAlignmentCenter);
-    }] target:nil action:NULL tag:SJEdgeControlLayerBottomItem_Separator];
-    [self.bottomAdapter addItem:separatorItem];
-    
-    // 全部时长
-    SJEdgeControlButtonItem *durationTimeItem = [SJEdgeControlButtonItem placeholderWithSize:8 tag:SJEdgeControlLayerBottomItem_DurationTime];
-    [self.bottomAdapter addItem:durationTimeItem];
-    
-    // 播放进度条
-    SJProgressSlider *slider = [SJProgressSlider new];
-    slider.trackHeight = 3;
-    slider.delegate = self;
-    slider.tap.enabled = YES;
-    slider.showsBufferProgress = YES;
-    __weak typeof(self) _self = self;
-    slider.tappedExeBlock = ^(SJProgressSlider * _Nonnull slider, CGFloat location) {
-        __strong typeof(_self) self = _self;
-        if ( !self ) return;
-        if ( self.videoPlayer.canSeekToTime && self.videoPlayer.canSeekToTime(self.videoPlayer) == NO ) {
-            return;
-        }
-        
-        if ( self.videoPlayer.assetStatus != SJAssetStatusReadyToPlay ) {
-            return;
-        }
-    
-        [self.videoPlayer seekToTime:location completionHandler:nil];
-    };
-    SJEdgeControlButtonItem *progressItem = [[SJEdgeControlButtonItem alloc] initWithCustomView:slider tag:SJEdgeControlLayerBottomItem_Progress];
-    progressItem.insets = SJEdgeInsetsMake(8, 8);
-    progressItem.fill = YES;
-    [self.bottomAdapter addItem:progressItem];
-
-    // 全屏按钮
-    SJEdgeControlButtonItem *fullItem = [SJEdgeControlButtonItem placeholderWithType:SJButtonItemPlaceholderType_49x49 tag:SJEdgeControlLayerBottomItem_Full];
-    fullItem.resetsAppearIntervalWhenPerformingItemAction = NO;
-    [fullItem addAction:[SJEdgeControlButtonItemAction actionWithTarget:self action:@selector(_fullItemWasTapped)]];
-    [self.bottomAdapter addItem:fullItem];
-
-    [self.bottomAdapter reload];
+//    // 播放按钮
+//    SJEdgeControlButtonItem *playItem = [SJEdgeControlButtonItem placeholderWithType:SJButtonItemPlaceholderType_49x49 tag:SJEdgeControlLayerBottomItem_Play];
+//    [playItem addAction:[SJEdgeControlButtonItemAction actionWithTarget:self action:@selector(_playItemWasTapped)]];
+//    [self.bottomAdapter addItem:playItem];
+//    
+//    SJEdgeControlButtonItem *liveItem = [[SJEdgeControlButtonItem alloc] initWithTag:SJEdgeControlLayerBottomItem_LIVEText];
+//    liveItem.hidden = YES;
+//    [self.bottomAdapter addItem:liveItem];
+//    
+//    // 当前时间
+//    SJEdgeControlButtonItem *currentTimeItem = [SJEdgeControlButtonItem placeholderWithSize:8 tag:SJEdgeControlLayerBottomItem_CurrentTime];
+//    [self.bottomAdapter addItem:currentTimeItem];
+//    
+//    // 时间分隔符
+//    SJEdgeControlButtonItem *separatorItem = [[SJEdgeControlButtonItem alloc] initWithTitle:[NSAttributedString sj_UIKitText:^(id<SJUIKitTextMakerProtocol>  _Nonnull make) {
+//        make.append(@"/ ").font([UIFont systemFontOfSize:11]).textColor([UIColor whiteColor]).alignment(NSTextAlignmentCenter);
+//    }] target:nil action:NULL tag:SJEdgeControlLayerBottomItem_Separator];
+//    [self.bottomAdapter addItem:separatorItem];
+//    
+//    // 全部时长
+//    SJEdgeControlButtonItem *durationTimeItem = [SJEdgeControlButtonItem placeholderWithSize:8 tag:SJEdgeControlLayerBottomItem_DurationTime];
+//    [self.bottomAdapter addItem:durationTimeItem];
+//    
+//    // 播放进度条
+//    SJProgressSlider *slider = [SJProgressSlider new];
+//    slider.trackHeight = 3;
+//    slider.delegate = self;
+//    slider.tap.enabled = YES;
+//    slider.showsBufferProgress = YES;
+//    __weak typeof(self) _self = self;
+//    slider.tappedExeBlock = ^(SJProgressSlider * _Nonnull slider, CGFloat location) {
+//        __strong typeof(_self) self = _self;
+//        if ( !self ) return;
+//        if ( self.videoPlayer.canSeekToTime && self.videoPlayer.canSeekToTime(self.videoPlayer) == NO ) {
+//            return;
+//        }
+//        
+//        if ( self.videoPlayer.assetStatus != SJAssetStatusReadyToPlay ) {
+//            return;
+//        }
+//    
+//        [self.videoPlayer seekToTime:location completionHandler:nil];
+//    };
+//    SJEdgeControlButtonItem *progressItem = [[SJEdgeControlButtonItem alloc] initWithCustomView:slider tag:SJEdgeControlLayerBottomItem_Progress];
+//    progressItem.insets = SJEdgeInsetsMake(8, 8);
+//    progressItem.fill = YES;
+//    [self.bottomAdapter addItem:progressItem];
+//
+//    // 全屏按钮
+//    SJEdgeControlButtonItem *fullItem = [SJEdgeControlButtonItem placeholderWithType:SJButtonItemPlaceholderType_49x49 tag:SJEdgeControlLayerBottomItem_Full];
+//    fullItem.resetsAppearIntervalWhenPerformingItemAction = NO;
+//    [fullItem addAction:[SJEdgeControlButtonItemAction actionWithTarget:self action:@selector(_fullItemWasTapped)]];
+//    [self.bottomAdapter addItem:fullItem];
+//
+//    [self.bottomAdapter reload];
 }
 
 - (void)_addItemsToRightAdapter {
